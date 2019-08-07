@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv/config");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -7,7 +8,9 @@ const routes = require("./routes");
 const server = express();
 
 mongoose.connect(
-  "mongodb+srv://livre:livreacesso@cluster0-clgs7.mongodb.net/tindev?retryWrites=true&w=majority",
+  `mongodb+srv://${process.env.MONGO_USER}:${
+    process.env.MONGO_PASS
+  }@cluster0-clgs7.mongodb.net/tindev?retryWrites=true&w=majority`,
   { useNewUrlParser: true }
 );
 
